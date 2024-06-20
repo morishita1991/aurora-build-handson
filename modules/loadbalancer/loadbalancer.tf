@@ -3,11 +3,11 @@ resource "aws_lb" "sample_alb" {
   name               = "sample-alb"
   internal           = false
   load_balancer_type = "application"
-  security_groups = [aws_security_group.opmng_sg.id]
+  security_groups    = [var.opmng_sg_id]
 
   subnets = [
-    aws_subnet.public_subnet_1a.id,
-    aws_subnet.public_subnet_1c.id
+    var.public_1a_address_id,
+    var.public_1c_address_id,
   ]
 
   ip_address_type = "ipv4"
@@ -19,7 +19,7 @@ resource "aws_lb" "sample_alb" {
 
 resource "aws_lb_target_group_attachment" "sample_target_ec2" {
   target_group_arn = aws_lb_target_group.sample_target_group.arn
-  target_id        = aws_instance.app_server.id
+  target_id        = var.app_server_id
 }
 
 resource "aws_lb_listener" "sample_listener" {
@@ -41,7 +41,7 @@ resource "aws_lb_target_group" "sample_target_group" {
   port             = 80
   protocol         = "HTTP"
 
-  vpc_id = aws_vpc.vpc.id
+  vpc_id = var.vpc_id
 
   tags = {
     Name = "sample-target-group"

@@ -7,7 +7,8 @@
 resource "aws_security_group" "opmng_sg" {
   name        = "${var.project}-${var.environment}-opmng-sg"
   description = "Operation Management Security Group"
-  vpc_id      = aws_vpc.vpc.id
+  vpc_id      = var.vpc_id
+#  vpc_id      = aws_vpc.vpc.id
 
   tags = {
     Name    = "${var.project}-${var.environment}-opmng-sg"

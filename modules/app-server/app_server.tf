@@ -18,16 +18,16 @@
 resource "aws_instance" "app_server" {
   ami                         = data.aws_ami.amazon-linux2.id
   instance_type               = "t2.micro"
-  subnet_id                   = aws_subnet.public_subnet_1a.id
+  subnet_id                   = var.public_1a_address_id
   associate_public_ip_address = true
 
   # セキュリティグループ
   vpc_security_group_ids = [
-    aws_security_group.opmng_sg.id
+    var.opmng_sg_id
   ]
 
   # インスタンスプロフィール(IAMロール)
-  iam_instance_profile = aws_iam_instance_profile.app_ec2_profile.name
+  iam_instance_profile = var.app_ec2_profile_name
 
   # キーペア
   #  key_name = aws_key_pair.keypair.key_name
