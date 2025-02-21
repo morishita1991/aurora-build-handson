@@ -1,3 +1,3 @@
-output "app_ec2_profile_name" {
-  value = aws_iam_instance_profile.app_ec2_profile.name
+output "aurora_enhanced_monitoring_role_arn" {
+  value = aws_iam_role.rds_enhanced_monitoring_role.arn
 }
