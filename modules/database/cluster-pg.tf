@@ -1,5 +1,5 @@
 resource "aws_rds_cluster_parameter_group" "aurora_cluster_parameter_group" {
-  name   = "aurora-cluster-parameter-group-osaka-${var.env}"
+  name   = "aurora-cluster-parameter-group-${var.region}-${var.env}"
   family = "aurora-mysql8.0"  # 使用する Aurora MySQL のバージョンに合わせる
   description = "Aurora MySQL cluster parameter group"
 

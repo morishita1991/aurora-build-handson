@@ -1,5 +1,5 @@
 resource "aws_db_parameter_group" "aurora_instance_parameter_group" {
-  name   = "aurora-instance-parameter-group-osaka-${var.env}"
+  name   = "aurora-instance-parameter-group-${var.region}-${var.env}"
   family = "aurora-mysql8.0"  # 使用する Aurora MySQL のバージョンに合わせる
   description = "Aurora MySQL instance parameter group"
 
